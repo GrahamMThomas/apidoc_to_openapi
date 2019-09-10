@@ -1,0 +1,26 @@
+import setuptools
+
+with open("README.md", "r") as fh:
+    long_description = fh.read()
+
+setuptools.setup(
+    name="apidoc_to_openapi",
+    version="0.0.1",
+    author="Graham Thomas",
+    author_email="grahamthethomas@gmail.com",
+    description="A python package which converts apidoc comments in various languages to OpenApi Spec .json files.",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
+    url="https://github.com/GrahamMThomas/apidoc_to_openapi",
+    packages=setuptools.find_packages(),
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
+    ],
+    python_requires='>=3.6',
+)
+
+install_require = [
+    "colorama"
+]
