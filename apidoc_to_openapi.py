@@ -3,6 +3,11 @@ import glob
 import os
 import re
 
+from lib.api import Api
+from lib.api_name import ApiName
+from lib.api_group import ApiGroup
+from lib.api_param import ApiParam
+
 from colorama import Fore
 
 from lib.log import create_custom_logger
@@ -39,7 +44,17 @@ def find_apidoc_annotations(text):
     return annotations
 
 def parse_generic_annotation(annotation):
-    print(annotation.split(' '))
+    class_name = 'A'+annotation.split(' ')[0][2:]
+    target_class = globals().get(class_name)
+    if not target_class:
+        logger.error("Could not find class for %s", class_name)
+        return None
+
+    anno_obj = target_class(annotation)
+    print(anno_obj)
+    return anno_obj
+
+
 
 def main():
     logger.info(f"{Fore.GREEN}Hello{Fore.RESET}")
