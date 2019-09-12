@@ -1,7 +1,7 @@
-from lib.apidoc_annotation import ApidocAnnotation
+from lib.annotations.apidoc_annotation import ApidocAnnotation
 from lib.errors import *
 
-class ApiName(ApidocAnnotation):
+class ApiGroup(ApidocAnnotation):
 
     def __init__(self, declaration):
         self.declaration = declaration
@@ -9,7 +9,7 @@ class ApiName(ApidocAnnotation):
         self.parse(declaration.split(' ')[1:])
 
     def __str__(self):
-        return f"ApiName - {self.name}"
+        return f"ApiGroup - {self.name}"
 
     def parse(self, args):
         if not args:

@@ -1,0 +1,87 @@
+from lib.annotations.apidoc_annotation import ApidocAnnotation
+
+from lib.annotations.api_name import ApiName
+from lib.annotations.api_group import ApiGroup
+from lib.annotations.api_param import ApiParam
+from lib.annotations.api_success import ApiSuccess
+
+from lib.errors import *
+from lib.helper_methods import merge
+
+
+class Api(ApidocAnnotation):
+    def __init__(self, declaration):
+        self.declaration = declaration
+        self.method = ""
+        self.path = ""
+        self.title = ""  # Optional
+
+        self.api_name = None
+        self.api_group = None
+        self.api_params = []
+        self.api_successes = []
+
+        self._parse(declaration.split(" ")[1:])
+        self._validate()
+
+    def construct(self, annotations):
+        for anno in annotations:
+            if isinstance(anno, ApiName):
+                self.api_name = anno
+            elif isinstance(anno, ApiGroup):
+                self.api_group = anno
+            elif isinstance(anno, ApiParam):
+                self.api_params.append(anno)
+            elif isinstance(anno, ApiSuccess):
+                self.api_successes.append(anno)
+
+    def to_swagger(self):
+        bob = ApiSuccess.build_parameters(self.api_successes)
+        return {
+            "paths": {
+                self.path: {
+                    self.method.lower(): {
+                        "summary": self.api_name.name,
+                        "description": self.title,
+                        "parameters": list(map(lambda x: x.to_swagger(), self.api_params)),
+                        "responses": {
+                            "200": {
+                                "description": f"Response",
+                                "content": {
+                                    "application/json": {
+                                        "schema": {"type": "object", "properties": bob}
+                                    }
+                                },
+                            }
+                        },
+                    }
+                }
+            }
+        }
+
+    # Private Methods =============================
+
+    def _parse(self, args):
+        if len(args) < 2:
+            raise ApidocParseError(f'"{self.declaration}" - Incorrect number of arguments')
+        self.method = args[0][1:-1].upper()
+        self.path = args[1]
+        if len(args) >= 3:
+            self.title = " ".join(args[2:])
+
+    def _validate(self):
+        if self.method not in [
+            "GET",
+            "HEAD",
+            "POST",
+            "PUT",
+            "DELETE",
+            "TRACE",
+            "OPTIONS",
+            "CONNECT",
+            "PATCH",
+        ]:
+            raise ApidocValidationError(f"{self.method} is not a valid http method")
+
+    def __str__(self):
+        return f"API - [{self.method}] {self.path} : {self.title}"
