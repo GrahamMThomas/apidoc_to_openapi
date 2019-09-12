@@ -29,7 +29,6 @@ def get_files_to_parse(relative_path):
                 if not file.split(".")[-1] in ACCEPTED_FILE_EXTENSIONS:
                     continue
                 full_file_path = os.path.join(r, file)
-                logger.debug("Inspecting %s", file)
                 files.append(os.path.join(r, full_file_path))
     return files
 

@@ -8,6 +8,10 @@ from lib.annotations.api_success import ApiSuccess
 from lib.errors import *
 from lib.helper_methods import merge
 
+import logging
+
+logger = logging.getLogger("root")
+
 
 class Api(ApidocAnnotation):
     def __init__(self, declaration):
@@ -25,6 +29,7 @@ class Api(ApidocAnnotation):
         self._validate()
 
     def construct(self, annotations):
+        logger.info(f"{self.path} has {len(annotations)} recognized annotations")
         for anno in annotations:
             if isinstance(anno, ApiName):
                 self.api_name = anno

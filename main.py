@@ -33,9 +33,8 @@ def file_output_to_file(output, filename):
 
 
 def main():
-    logger.info(f"{Fore.GREEN}Hello{Fore.RESET}")
-
     args = parse_command_line_args()
+    logger.info(f"{Fore.GREEN}Converting ApiDoc notation to OpenApi 3.0{Fore.RESET}")
     swagger = {"openapi": "3.0.0"}
 
     apidoc_conf = parse_apidoc_json(args.i)
@@ -64,11 +63,17 @@ def main():
     for i in api_indices:
         merge(swagger, annotations_objs[i].to_swagger())
 
+    # If -o is specified output to file, otherwise, output to stdout
     if args.o:
+        successful = False
         if args.yaml:
-            file_output_to_file(yaml.dump(swagger, indent=2, sort_keys=False), args.o)
+            successful = file_output_to_file(yaml.dump(swagger, indent=2, sort_keys=False), args.o)
         else:
-            file_output_to_file(json.dumps(swagger, indent=2), args.o)
+            successful = file_output_to_file(json.dumps(swagger, indent=2), args.o)
+        if successful:
+            logger.info("Successfully outputted documentation to %s", args.o)
+        else:
+            logger.info("Failed to output documentation to %s", args.o)
     else:
         if args.yaml:
             print("\n================YAML=================")
