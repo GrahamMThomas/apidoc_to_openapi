@@ -1,4 +1,4 @@
-<img src="docs/apidoc-to-openapi.png" align="right" />
+<img src="docs/apidoc-to-openapi_logo.png" align="right" />
 
 # Apidoc to Openapi Converter &nbsp; [![guide](https://img.shields.io/pypi/v/apidoc-to-openapi)](https://github.com/grahammthomas/apidoc_to_openapi)
 
