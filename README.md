@@ -21,7 +21,7 @@ Feel free to PR in any other annotations you need.
 ### Installing
 
 ```
-Coming soon
+pip install apidoc-to-openapi
 ```
 
 ```
@@ -34,6 +34,12 @@ optional arguments:
 
 Required:
   -i path     File or directory containing apidoc annotations
+```
+
+#### Example
+
+```
+apidoc-to-openapi -i ./my/path/ -o ./my/path/swagger.yaml --yaml
 ```
 
 ## Running the tests
