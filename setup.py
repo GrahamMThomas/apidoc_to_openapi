@@ -5,6 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="apidoc_to_openapi",
+    scripts=['bin/apidoc-to-openapi']
     version="0.0.1",
     author="Graham Thomas",
     author_email="grahamthethomas@gmail.com",
