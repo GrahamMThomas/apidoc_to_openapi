@@ -2,7 +2,7 @@ import logging
 import os
 import re
 
-from lib.annotations import *
+from apidoc_to_openapi.lib.annotations import *
 
 logger = logging.getLogger("root")
 ACCEPTED_FILE_EXTENSIONS = ["py"]

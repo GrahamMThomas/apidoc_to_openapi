@@ -1,12 +1,12 @@
-from lib.annotations.apidoc_annotation import ApidocAnnotation
+from apidoc_to_openapi.lib.annotations.apidoc_annotation import ApidocAnnotation
 
-from lib.annotations.api_name import ApiName
-from lib.annotations.api_group import ApiGroup
-from lib.annotations.api_param import ApiParam
-from lib.annotations.api_success import ApiSuccess
+from apidoc_to_openapi.lib.annotations.api_name import ApiName
+from apidoc_to_openapi.lib.annotations.api_group import ApiGroup
+from apidoc_to_openapi.lib.annotations.api_param import ApiParam
+from apidoc_to_openapi.lib.annotations.api_success import ApiSuccess
 
-from lib.errors import *
-from lib.helper_methods import merge
+from apidoc_to_openapi.lib.errors import *
+from apidoc_to_openapi.lib.helper_methods import merge
 
 import logging
 

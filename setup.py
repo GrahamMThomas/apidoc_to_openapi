@@ -22,5 +22,6 @@ setuptools.setup(
 )
 
 install_require = [
-    "colorama"
+    "colorama",
+    "pyyaml"
 ]

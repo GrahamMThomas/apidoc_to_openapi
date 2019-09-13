@@ -1,5 +1,5 @@
-from lib.annotations.apidoc_annotation import ApidocAnnotation
-from lib.errors import *
+from apidoc_to_openapi.lib.annotations.apidoc_annotation import ApidocAnnotation
+from apidoc_to_openapi.lib.errors import *
 
 class ApiGroup(ApidocAnnotation):
 

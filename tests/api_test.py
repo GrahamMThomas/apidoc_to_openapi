@@ -1,5 +1,5 @@
-from lib.annotations.api import Api
-from lib.errors import *
+from apidoc_to_openapi.lib.annotations.api import Api
+from apidoc_to_openapi.lib.errors import *
 
 
 def test_correct():

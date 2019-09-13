@@ -6,10 +6,10 @@ import json
 import yaml
 from colorama import Fore
 
-from lib.parse_config import *
-from lib.input_files import *
-from lib.helper_methods import merge
-from lib.log import create_custom_logger
+from apidoc_to_openapi.lib.parse_config import *
+from apidoc_to_openapi.lib.input_files import *
+from apidoc_to_openapi.lib.helper_methods import merge
+from apidoc_to_openapi.lib.log import create_custom_logger
 
 logger = create_custom_logger("root")
 

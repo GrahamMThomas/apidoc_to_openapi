@@ -1,5 +1,5 @@
-from lib.annotations.api_group import ApiGroup
-from lib.errors import ApidocParseError
+from apidoc_to_openapi.lib.annotations.api_group import ApiGroup
+from apidoc_to_openapi.lib.errors import ApidocParseError
 
 
 def test_correct():
