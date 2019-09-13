@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="apidoc_to_openapi",
-    scripts=['bin/apidoc-to-openapi']
+    scripts=['bin/apidoc-to-openapi'],
     version="0.0.1",
     author="Graham Thomas",
     author_email="grahamthethomas@gmail.com",
@@ -19,10 +19,9 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    python_requires='>=3.6',
-)
-
-install_require = [
+    install_requires = [
     "colorama",
     "pyyaml"
-]
+    ],
+    python_requires='>=3.6',
+)
