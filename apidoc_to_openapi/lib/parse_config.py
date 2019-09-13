@@ -1,6 +1,10 @@
 import json
 import os
 
+import logging
+
+logger = logging.getLogger("root")
+
 
 def parse_apidoc_json(file_path):
     """Parses the required apidoc.json file at the root of the user specified directory
@@ -14,7 +18,7 @@ def parse_apidoc_json(file_path):
         apidoc_conf = json.loads(apidoc_json)
         return apidoc_conf
     except FileNotFoundError:
-        logger.error("Could not locate apidoc.json in %s", file_path)
+        logger.error("Could not locate apidoc.json in %s", (file_path))
         exit(1)
     except json.decoder.JSONDecodeError:
         logger.error("apidoc.json Invalid JSON!")

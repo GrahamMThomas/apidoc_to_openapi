@@ -14,9 +14,12 @@ logger = create_custom_logger("root")
 
 def parse_command_line_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("-i")
-    parser.add_argument("-o")
-    parser.add_argument("--yaml", action="store_true")
+    req_grp = parser.add_argument_group(title="Required")
+    req_grp.add_argument(
+        "-i", metavar="path", required=True, help="File or directory containing apidoc annotations"
+    )
+    parser.add_argument("-o", metavar="path", help="File output (default: stdout)")
+    parser.add_argument("--yaml", action="store_true", help="Convert output to yaml format")
     parser.set_defaults(yaml=False)
     args = parser.parse_args()
     return args
