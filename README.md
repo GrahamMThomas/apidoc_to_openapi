@@ -4,6 +4,20 @@
 
 [Apidoc](http://apidocjs.com/) syntax is very easy and lightweight, whereas [Openapi aka Swagger](https://swagger.io/docs/specification/about/) syntax is very verbose and not noob friendly. The goal of this project is to make documenting api endpoints so easy that developers won't mind spending the time to do it, instead of just ignoring documentation.
 
+## Apidoc conversion coverage
+
+Convertable Annotations:
+
+```
+@api
+@apiName
+@apiGroup
+@apiParam
+@apiSuccess
+```
+
+Feel free to PR in any other annotations you need.
+
 ### Installing
 
 ```
@@ -29,10 +43,6 @@ Used pytest for testing. Test coverage isn't near where I want it to be.
 ## Coding Style
 
 Using black formatter and pylint
-
-## Versioning
-
-Using [SemVer](http://semver.org/) for versioning.
 
 ## Authors
 
