@@ -21,7 +21,7 @@ Feel free to PR in any other annotations you need.
 ### Installing
 
 ```
-Coming soon
+pip install apidoc-to-openapi
 ```
 
 ```
