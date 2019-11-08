@@ -42,7 +42,7 @@ class Api(ApidocAnnotation):
 
     def to_swagger(self):
         bob = ApiSuccess.build_parameters(self.api_successes)
-        print(bob)
+
         large_boi = {
             "paths": {
                 self.path: {
