@@ -72,7 +72,7 @@ class ApiSuccess(ApidocAnnotation):
 
         for succ in api_successes:
             nested_fields = succ.field.split(".")
-            dir_path = []
+            dir_path = [str(succ.group)]
 
             # Build dictionary path to set the variable in the correct spot
             for i, field in enumerate(nested_fields[:-1]):
@@ -84,6 +84,7 @@ class ApiSuccess(ApidocAnnotation):
                         nested_dirs_for_field.insert(1, "items")
                 dir_path.extend(nested_dirs_for_field)
 
-            setInDict(parameters, dir_path + [nested_fields[-1]], succ.to_swagger())
+            print(dir_path)
+            setInDict(parameters, dir_path, {nested_fields[-1]: succ.to_swagger()})
 
         return parameters

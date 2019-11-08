@@ -42,27 +42,30 @@ class Api(ApidocAnnotation):
 
     def to_swagger(self):
         bob = ApiSuccess.build_parameters(self.api_successes)
-        return {
+        print(bob)
+        large_boi = {
             "paths": {
                 self.path: {
                     self.method.lower(): {
                         "summary": self.api_name.name,
                         "description": self.title,
                         "parameters": list(map(lambda x: x.to_swagger(), self.api_params)),
-                        "responses": {
-                            "200": {
-                                "description": f"Response",
-                                "content": {
-                                    "application/json": {
-                                        "schema": {"type": "object", "properties": bob}
-                                    }
-                                },
-                            }
-                        },
+                        "responses": {},
                     }
                 }
             }
         }
+
+        # For each response code, give the related response successes
+        for key in bob.keys():
+            large_boi["paths"][self.path][self.method.lower()]["responses"][key] = {
+                "description": f"Response",
+                "content": {
+                    "application/json": {"schema": {"type": "object", "properties": bob[key]}}
+                },
+            }
+
+        return large_boi
 
     # Private Methods =============================
 
