@@ -1,5 +1,7 @@
 <img src="docs/apidoc-to-openapi_144px.png" align="right" />
 
+__No longer maintained__
+
 # Apidoc to Openapi Converter &nbsp; [![guide](https://img.shields.io/pypi/v/apidoc-to-openapi)](https://github.com/grahammthomas/apidoc_to_openapi)
 
 [Apidoc](http://apidocjs.com/) syntax is very easy and lightweight, whereas [Openapi aka Swagger](https://swagger.io/docs/specification/about/) syntax is very verbose and not noob friendly. The goal of this project is to make documenting api endpoints so easy that developers won't mind spending the time to do it, instead of just ignoring documentation.
